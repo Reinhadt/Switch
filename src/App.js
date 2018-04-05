@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Productos from './source'
 import ImagenLat from './components/ImagenLat';
-import Producto from './components/Producto';
+import ProductoHub from './components/ProductoHub';
 import Precio from './components/Precio';
 
 
@@ -14,18 +13,23 @@ class App extends Component {
 
     this.state = {
       nombre: "",
-      precio: "",
+      precioConsola: 0,
+      precioAccesorio: 0,
+      total: 0,
       foto: "",
       selected: true
     }
 
+    this.consolas = Productos[0].consolas;
+    this.accesorios = Productos[1].accesorios;
+
   }
 
   componentWillMount(){
-    const switchInicial = Productos[0].consolas.switchNeon;
+    const switchInicial = this.consolas.switchNeon;
     this.setState({
       nombre: switchInicial.nombre,
-      precio: switchInicial.precio,
+      precioConsola: switchInicial.precio,
       foto: "",
       selected: true
     })
@@ -36,7 +40,10 @@ class App extends Component {
       <div className="App container-white">
         <p className="elige">Elige cómo deseas comprar tu Nintendo Switch</p>
         <ImagenLat source={this.state.foto}/>
-        <Precio leyenda="1. Elige un color" cantidad={this.state.precio} />
+        <Precio leyenda="1. Elige un color" cantidad={this.state.precioConsola} />
+        <ProductoHub prod={this.consolas} />
+        <Precio leyenda="2. Elige un accesorio" cantidad={this.state.precioAccesorio} />
+        <ProductoHub prod={this.accesorios} />
       </div>
     );
   }
