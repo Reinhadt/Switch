@@ -2,7 +2,11 @@ import React from 'react';
 
 const ImagenLat = (props) =>{
     return(
-        <img src={props.fot} alt={props.foto}/>
+        <div class={props.claseWrapper}>
+            <img src={props.source} alt={props.source}/>
+            <p className="Nintendo-Switch">{props.nombre}</p>
+            <p className="desc">{props.desc}</p>
+        </div>    
     )
     
 }

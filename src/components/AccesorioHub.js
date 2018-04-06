@@ -1,25 +1,19 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
-import Producto from './Producto';
+import Accesorio from './Accesorio';
 
-class ProductoHub extends Component{
-
-
-
+class AccesorioHub extends Component{
     render(){
 
-        let renderConsolas;
-        renderConsolas = _.map(this.props.prod, (el) => {
+        let renderAccesorio;
+        renderAccesorio = _.map(this.props.prod, (el) => {
             return(
                 <div className="producto">
                     <Producto 
-                        clickProducto={this.props.clickProducto} 
+                        clickAccesorio={this.props.clickAccesorio} 
                         nombre={el.nombre} 
                         precio={el.precio} 
                         imagen={el.foto} 
-                        imgGrande={el.fotoGrande} 
-                        wrapper={el.colorPred}
-                        desc={el.desCorta}
                         key={el.nombre}/>
                 </div>        
             )
@@ -27,7 +21,7 @@ class ProductoHub extends Component{
         
         return(
             <div className="hubProducto">
-                {renderConsolas}
+                {renderAccesorio}
             </div>
         )
     }
